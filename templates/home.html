@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CreditWise — Know your loan decision in seconds</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="{{ url_for('home') }}" class="brand"><i>CW</i> CreditWise</a>
+    <div class="links">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#emi">EMI calculator</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="{{ url_for('assess') }}" class="btn btn--p">Check eligibility <span class="arr">→</span></a>
+  </div>
+</nav>
+
+<main>
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <div class="wrap">
+      <div>
+        <span class="pill"><b></b> Instant AI loan assessment</span>
+        <h1>Know your loan decision in <span class="grad">seconds</span>, not days.</h1>
+        <p class="lead">Fill in one short form and CreditWise estimates your approval and rejection probability using a model trained on historical loan outcomes.</p>
+        <div class="cta">
+          <a href="{{ url_for('assess') }}" class="btn btn--p">Check my eligibility <span class="arr">→</span></a>
+          <a href="#how" class="btn btn--g">See how it works</a>
+        </div>
+        <div class="chips"><span>No signup</span><span>Instant result</span><span>5 loan types</span></div>
+      </div>
+
+      <div class="stage" id="stage">
+        <div class="mock" id="mock">
+          <div class="mock__top"><i></i> Loan decision</div>
+          <div class="ring" id="ring">
+            <svg width="170" height="170" viewBox="0 0 170 170">
+              <defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2557ff"/><stop offset="1" stop-color="#10b5a4"/></linearGradient></defs>
+              <circle class="t" cx="85" cy="85" r="70"/><circle class="v" cx="85" cy="85" r="70"/>
+            </svg>
+            <div><span id="ringNum">0.00%</span><small>approval probability</small></div>
+          </div>
+          <div class="stamp" id="stamp">APPROVED</div>
+          <div class="row">Credit score <b>780</b></div>
+          <div class="row">Debt-to-income <b>0.22</b></div>
+          <small class="note">Sample result for illustration</small>
+        </div>
+        <div class="float a">🏠</div>
+        <div class="float b">Rejection risk<span>0.65%</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="wrap">
+      <div class="glass rv">
+        <div class="stat"><b data-count="18">0</b><span>Data points analysed</span></div>
+        <div class="stat"><b data-count="5">0</b><span>Easy form sections</span></div>
+        <div class="stat"><b data-count="2">0</b><span>Probabilities shown</span></div>
+        <div class="stat"><b data-count="0">0</b><span>Signups needed</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section id="how">
+    <div class="wrap">
+      <div class="head rv"><h2>Three steps to your answer</h2><p>No paperwork, no waiting in a queue. Just your details and a clear result.</p></div>
+      <div class="steps">
+        <div class="step glass rv" style="--d:.05s"><div class="ic">01</div><h3>Enter your details</h3><p>Applicant, employment, income, credit standing and the loan you want.</p></div>
+        <div class="step glass rv" style="--d:.15s"><div class="ic">02</div><h3>Model assesses it</h3><p>A logistic regression pipeline processes your profile in under a second.</p></div>
+        <div class="step glass rv" style="--d:.25s"><div class="ic">03</div><h3>Get your verdict</h3><p>See Approved or Declined along with exact approval and rejection chances.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="wrap">
+      <div class="head rv"><h2>Built to be clear and quick</h2><p>Everything you need to understand where your application stands.</p></div>
+      <div class="grid">
+        <div class="card glass rv"><div class="em">⚡</div><h3>Instant verdict</h3><p>Results appear right next to your form the moment you submit.</p></div>
+        <div class="card glass rv" style="--d:.08s"><div class="em">📊</div><h3>Transparent probability</h3><p>You see both approval and rejection percentages, not just a yes or no.</p></div>
+        <div class="card glass rv" style="--d:.16s"><div class="em">🧠</div><h3>Smart features</h3><p>Income, credit score and debt ratio are transformed the same way the model was trained.</p></div>
+        <div class="card glass rv"><div class="em">🏦</div><h3>Every loan type</h3><p>Personal, car, business, home and education loans are all supported.</p></div>
+        <div class="card glass rv" style="--d:.08s"><div class="em">📱</div><h3>Works on any screen</h3><p>The layout adapts from large monitors down to your phone.</p></div>
+        <div class="card glass rv" style="--d:.16s"><div class="em">🔓</div><h3>No account needed</h3><p>Open the form, fill it in and get your result. Nothing to register.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMI -->
+  <section id="emi">
+    <div class="wrap">
+      <div class="head rv"><h2>Plan your EMI first</h2><p>Move the sliders to see what your monthly payment could look like.</p></div>
+      <div class="emi glass rv">
+        <div class="emi__in">
+          <div class="fld"><div><label for="amt">Loan amount</label><output id="oAmt"></output></div><input type="range" id="amt" min="500" max="50000" step="500" value="21976"></div>
+          <div class="fld"><div><label for="term">Loan term</label><output id="oTerm"></output></div><input type="range" id="term" min="6" max="120" step="1" value="12"></div>
+          <div class="fld"><div><label for="rate">Interest rate (yearly)</label><output id="oRate"></output></div><input type="range" id="rate" min="6" max="24" step="0.5" value="11"></div>
+          <a href="{{ url_for('assess') }}" class="btn btn--p">Use these in the form <span class="arr">→</span></a>
+        </div>
+        <div class="emi__out">
+          <div class="donut" id="donut"><div><b id="emiBig">—</b>per month</div></div>
+          <div class="lg"><span><i style="background:var(--blue)"></i>Principal</span><span><i style="background:var(--gold)"></i>Interest</span></div>
+          <div class="sum"><div class="row">Total interest <b id="tInt"></b></div><div class="row">Total payable <b id="tPay"></b></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="head rv"><h2>Questions, answered</h2></div>
+      <div class="faq">
+        <details class="glass rv"><summary>Is this a final credit decision?</summary><p>No. It is an automated estimate from a machine learning model and does not replace a bank's official decision.</p></details>
+        <details class="glass rv"><summary>Which model is used?</summary><p>A logistic regression pipeline trained on historical loan outcomes.</p></details>
+        <details class="glass rv"><summary>What details do I need?</summary><p>Basic personal information, employment, income and savings, credit score, existing loans, debt-to-income ratio and your loan request.</p></details>
+        <details class="glass rv"><summary>How long does it take?</summary><p>Filling the form takes a minute or two. The result itself appears instantly after you submit.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding-top:20px">
+    <div class="wrap">
+      <div class="band rv">
+        <h2>Ready to see where you stand?</h2>
+        <p>Takes about a minute. No signup required.</p>
+        <a href="{{ url_for('assess') }}" class="btn">Assess my application <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© CreditWise — Loan Decision Ledger<br>Results are automated estimates and not financial advice.</div>
+</footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fmt = function (n) { return "₹" + Math.round(n).toLocaleString("en-IN"); };
+
+  /* sticky nav shadow */
+  var nav = document.getElementById("nav");
+  var onScroll = function () { nav.classList.toggle("scrolled", window.scrollY > 10); };
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  /* scroll reveal */
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll(".rv").forEach(function (el) { io.observe(el); });
+
+  /* count-up numbers */
+  var co = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var el = e.target, to = +el.dataset.count, t0 = null;
+      co.unobserve(el);
+      (function step(t) {
+        t0 = t0 || t;
+        var p = Math.min((t - t0) / 1400, 1);
+        el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+        if (p < 1 && !reduce) requestAnimationFrame(step); else el.textContent = to;
+      })(performance.now());
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll("[data-count]").forEach(function (el) { co.observe(el); });
+
+  /* hero ring + counter */
+  var ring = document.getElementById("ring"), num = document.getElementById("ringNum"), stamp = document.getElementById("stamp");
+  setTimeout(function () {
+    ring.classList.add("go"); stamp.classList.add("on");
+    var t0 = null, target = 99.35;
+    (function step(t) {
+      t0 = t0 || t;
+      var p = Math.min((t - t0) / 2000, 1);
+      num.textContent = (target * (1 - Math.pow(1 - p, 3))).toFixed(2) + "%";
+      if (p < 1) requestAnimationFrame(step);
+    })(performance.now());
+  }, 400);
+
+  /* hero card follows the pointer (desktop only) */
+  var stage = document.getElementById("stage"), mock = document.getElementById("mock");
+  if (!reduce && window.matchMedia("(min-width: 861px)").matches) {
+    stage.addEventListener("mousemove", function (e) {
+      var r = stage.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      mock.style.transform = "rotateY(" + (-7 + x * 12) + "deg) rotateX(" + (3 - y * 10) + "deg)";
+    });
+    stage.addEventListener("mouseleave", function () { mock.style.transform = ""; });
+  }
+
+  /* feature card spotlight + tilt */
+  document.querySelectorAll(".card").forEach(function (c) {
+    c.addEventListener("mousemove", function (e) {
+      var r = c.getBoundingClientRect();
+      var x = e.clientX - r.left, y = e.clientY - r.top;
+      c.style.setProperty("--mx", x + "px"); c.style.setProperty("--my", y + "px");
+      if (!reduce) c.style.transform = "perspective(700px) rotateX(" + ((y / r.height - 0.5) * -8) + "deg) rotateY(" + ((x / r.width - 0.5) * 8) + "deg) translateY(-4px)";
+    });
+    c.addEventListener("mouseleave", function () { c.style.transform = ""; });
+  });
+
+  /* EMI calculator */
+  var amt = document.getElementById("amt"), term = document.getElementById("term"), rate = document.getElementById("rate");
+  function calc() {
+    [amt, term, rate].forEach(function (s) {
+      s.style.setProperty("--p", ((s.value - s.min) / (s.max - s.min) * 100) + "%");
+    });
+    var P = +amt.value, n = +term.value, r = +rate.value / 12 / 100;
+    var emi = r === 0 ? P / n : P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+    var total = emi * n, interest = total - P;
+    document.getElementById("oAmt").textContent = fmt(P);
+    document.getElementById("oTerm").textContent = n + " months";
+    document.getElementById("oRate").textContent = rate.value + "%";
+    document.getElementById("emiBig").textContent = fmt(emi);
+    document.getElementById("tInt").textContent = fmt(interest);
+    document.getElementById("tPay").textContent = fmt(total);
+    document.getElementById("donut").style.setProperty("--d", (P / total * 100) + "%");
+  }
+  [amt, term, rate].forEach(function (s) { s.addEventListener("input", calc); });
+  calc();
+})();
+</script>
+</body>
+</html>
